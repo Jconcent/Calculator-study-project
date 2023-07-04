@@ -1,13 +1,21 @@
 #ifndef RPN_CALCULATOR_H
 #define RPN_CALCULATOR_H
 
-#include "ICalculator.h"
+#include <string>
+#include <vector>
+
+#ifdef DEBUG
+#include <iostream>
+#endif
 
 namespace s21 {
-  class RpnCalculator: public ICalculator {
+  class RpnCalculator {
     public:
       RpnCalculator() {}
       double calculate(std::string equation);
+    private:
+      std::vector<std::string> splitBySpace(std::string equation);
+
   };
 } // namespaces s21 
 
