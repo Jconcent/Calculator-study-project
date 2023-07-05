@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include "EquationToRpnTransformer.h"
 
 #ifdef DEBUG
 #include <iostream>
@@ -12,9 +13,10 @@ namespace s21 {
   class RpnCalculator {
     public:
       RpnCalculator() {}
-      double calculate(std::string equation);
+      double calculate(const std::string& equation);
     private:
-      std::vector<std::string> splitBySpace(std::string equation);
+      std::vector<std::string> splitBySpace(const std::string& equation);
+      EquationToRpnTransformer rpnTransformer;
 
   };
 } // namespaces s21 

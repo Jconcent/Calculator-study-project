@@ -1,19 +1,31 @@
 #include "RpnCalculator.h"
 
 namespace s21 {
-  double RpnCalculator::calculate(std::string equation) {
+  double RpnCalculator::calculate(const std::string& equation) {
+    auto equationMembers = splitBySpace(equation);
+
     #ifdef DEBUG
-      std::cout << "work" << '\n';
+      std::cout << "DEBUG AFTER SPLIT\n";
+      for (auto splitString : equationMembers) {
+        std::cout << "DEBUG: " << splitString << '\n';
+      }
+      std::cout << '\n';
     #endif
-    auto splited = splitBySpace(equation);
+
+    auto resultNotation = rpnTransformer.transformEquation(equationMembers);
+
     #ifdef DEBUG
-      std::cout << "splited string:\n" << splited[0] << " " << splited[1] << " " << splited[2] << '\n';
+      std::cout << "DEBUG AFTER TRANSFORM\n";
+      for (auto notationMember : resultNotation) {
+        std::cout << "DEBUG: " << notationMember << '\n';
+      }
+      std::cout << '\n';
     #endif
     
     return 0.0;
   }
 
-  std::vector<std::string> RpnCalculator::splitBySpace(std::string equation) {
+  std::vector<std::string> RpnCalculator::splitBySpace(const std::string& equation) {
     std::vector<std::string> result;
     size_t start = 0;
 
