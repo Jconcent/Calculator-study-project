@@ -13,16 +13,31 @@ namespace s21 {
     #endif
 
     auto resultNotation = rpnTransformer.transformEquation(equationMembers);
+    while (resultNotation.size() != 1) {
+      calculateRpnNotation(resultNotation);
+    }
+    return (*resultNotation.begin()).getValue();
+  }
 
-    #ifdef DEBUG
-      std::cout << "DEBUG AFTER TRANSFORM\n";
-      for (auto notationMember : resultNotation) {
-        std::cout << "DEBUG: " << notationMember << '\n';
+  void RpnCalculator::calculateRpnNotation(std::list<EquationMember>& notation) {
+    for (auto operation : notation) {
+      if (operation.getType() != NUMBER) {
+        resolveAndApplyOperation(operation, notation);
+        break;
       }
-      std::cout << '\n';
-    #endif
-    
-    return 0.0;
+    }
+  }
+
+  void RpnCalculator::resolveAndApplyOperation(EquationMember operation, std::list<EquationMember>& notation) {
+    if (binaryOperation_.count(operation.getType()) > 0) {
+      auto first = (*notation.begin()).getValue();
+      auto second = (*(++notation.begin())).getValue();
+      auto result = binaryOperation_[operation.getType()](first, second);
+      notation.pop_front();
+      notation.pop_front();
+      notation.pop_front();
+      notation.push_front(EquationMember(result, NUMBER));
+    }
   }
 
   std::vector<std::string> RpnCalculator::splitBySpace(const std::string& equation) {

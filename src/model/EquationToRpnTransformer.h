@@ -4,6 +4,9 @@
 #include <string>
 #include <stack>
 #include <vector>
+#include <list>
+#include <map>
+#include "EquationMember.h"
 
 #ifdef DEBUG
 #include <iostream>
@@ -13,12 +16,22 @@ namespace s21 {
   class EquationToRpnTransformer {
     public:
       EquationToRpnTransformer() {}
-      std::vector<std::string> transformEquation(std::vector<std::string> equationMembers);
+      std::list<EquationMember> transformEquation(std::vector<std::string> equationMembers);
     private:
       void processEquationMember(std::string member);
       bool isNumberMember(std::string member);
-      std::stack<std::string> operationsStack_;
-      std::vector<std::string> resultNotation_;
+      bool isBinaryOperation(std::string member);
+      void resolvePriority(EquationMember member);
+      void moveAllOperationToResult();
+      void debug();
+      std::stack<EquationMember> operationsStack_;
+      std::list<EquationMember> resultNotation_;
+      std::map<std::string, EquationMemberType> binaryOperations_ = {
+        {"+", PLUS}
+      };
+      std::map<EquationMemberType, int> priorityByType_ = {
+        {PLUS, 1}
+      };
   };
 } // namespaces s21 
 
