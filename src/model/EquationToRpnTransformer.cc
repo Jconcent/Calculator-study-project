@@ -15,6 +15,10 @@ namespace s21 {
       resultNotation_.push_back(EquationMember(std::stold(member), NUMBER));
     } else if (isBinaryOperation(member)) {
       resolvePriority(EquationMember(binaryOperations_[member]));
+    } else if (isBracket(member)) {
+      bracketProcess(member);
+    } else if (isPrefixFunction(member)) {
+      operationsStack_.push(EquationMember(prefixFunction_[member]));
     }
   }
 
@@ -24,6 +28,14 @@ namespace s21 {
 
   bool EquationToRpnTransformer::isBinaryOperation(std::string member) {
     return binaryOperations_.count(member) > 0;
+  }
+
+  bool EquationToRpnTransformer::isBracket(std::string member) {
+    return member == "(" || member == ")";
+  }
+
+  bool EquationToRpnTransformer::isPrefixFunction(std::string member) {
+    return prefixFunction_.count(member) > 0;
   }
 
   void EquationToRpnTransformer::resolvePriority(EquationMember member) {
@@ -42,6 +54,18 @@ namespace s21 {
   void EquationToRpnTransformer::moveAllOperationToResult() {
     while (!operationsStack_.empty()) {
       resultNotation_.push_back(operationsStack_.top());
+      operationsStack_.pop();
+    }
+  }
+
+  void EquationToRpnTransformer::bracketProcess(std::string member) {
+    if (member == "(") {
+      operationsStack_.push(EquationMember(BRACKET));
+    } else {
+      while(operationsStack_.top().getType() != BRACKET) {
+        resultNotation_.push_back(operationsStack_.top());
+        operationsStack_.pop();
+      }
       operationsStack_.pop();
     }
   }

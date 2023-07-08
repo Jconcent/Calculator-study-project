@@ -8,6 +8,10 @@ namespace s21 {
     MINUS,
     DIVISION,
     MULTI,
+    POWER,
+    MOD,
+    SIN,
+    COS,
     BRACKET
   };
 } // namespaces s21 
