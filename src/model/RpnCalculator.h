@@ -6,11 +6,8 @@
 #include <vector>
 #include <map>
 #include <math.h>
+#include <functional>
 #include "EquationToRpnTransformer.h"
-
-#ifdef DEBUG
-#include <iostream>
-#endif
 
 namespace s21 {
   class RpnCalculator {
@@ -21,7 +18,6 @@ namespace s21 {
       std::vector<std::string> splitBySpace(const std::string& equation);
       void calculateRpnNotation(std::list<EquationMember>& notation);
       void resolveAndApplyOperation(EquationMember operation, std::list<EquationMember>& notation, std::list<EquationMember>::iterator itSign);
-      void debug(std::list<EquationMember>& notation);
       EquationToRpnTransformer rpnTransformer;
       double calculationResult_;
       std::map<EquationMemberType, std::function<double(double, double)>> binaryOperation_ = {

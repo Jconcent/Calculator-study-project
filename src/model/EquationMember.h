@@ -4,10 +4,6 @@
 #include <string>
 #include "EquationMemberType.h"
 
-#ifdef DEBUG
-#include <iostream>
-#endif
-
 namespace s21 {
   class EquationMember {
     public:

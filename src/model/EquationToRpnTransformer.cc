@@ -1,17 +1,19 @@
 #include "EquationToRpnTransformer.h"
 
+#include <iostream>
+
 namespace s21 {
   std::list<EquationMember> EquationToRpnTransformer::transformEquation(std::vector<std::string> equationMembers) {
     for (auto equationMember : equationMembers) {
       processEquationMember(equationMember);
     }
     moveAllOperationToResult();
-    debug();
     return resultNotation_;
   }
 
   void EquationToRpnTransformer::processEquationMember(std::string member) {
     if (isNumberMember(member)) {
+        std::cout << member << '\n';
       resultNotation_.push_back(EquationMember(std::stold(member), NUMBER));
     } else if (isBinaryOperation(member)) {
       resolvePriority(EquationMember(binaryOperations_[member]));
@@ -68,21 +70,5 @@ namespace s21 {
       }
       operationsStack_.pop();
     }
-  }
-
-  void EquationToRpnTransformer::debug() {
-    #ifdef DEBUG
-    std::cout << "DEBUG OPERATION STACK\n";
-    while (!operationsStack_.empty()) {
-      std::cout << "DEBUG " << "VALUE " << operationsStack_.top().getValue() << " AND TYPE " << operationsStack_.top().getType() << "\n";
-      operationsStack_.pop();
-    }
-    std::cout << "\n";
-    std::cout << "DEBUG RESULT NOTATION\n";
-    for (auto resultMember : resultNotation_) {
-      std::cout << "DEBUG: " << "VALUE " << resultMember.getValue() << " AND TYPE " << resultMember.getType() << '\n';
-    }
-    std::cout << "\n";
-    #endif
   }
 }

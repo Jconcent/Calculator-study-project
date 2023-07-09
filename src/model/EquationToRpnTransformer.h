@@ -8,10 +8,6 @@
 #include <map>
 #include "EquationMember.h"
 
-#ifdef DEBUG
-#include <iostream>
-#endif
-
 namespace s21 {
   class EquationToRpnTransformer {
     public:
@@ -26,7 +22,6 @@ namespace s21 {
       void resolvePriority(EquationMember member);
       void moveAllOperationToResult();
       void bracketProcess(std::string member);
-      void debug();
       std::stack<EquationMember> operationsStack_;
       std::list<EquationMember> resultNotation_;
       std::map<std::string, EquationMemberType> binaryOperations_ = {

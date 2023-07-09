@@ -3,31 +3,13 @@
 namespace s21 {
   double RpnCalculator::calculate(const std::string& equation) {
     auto equationMembers = splitBySpace(equation);
-
-    #ifdef DEBUG
-      std::cout << "DEBUG AFTER SPLIT\n";
-      for (auto splitString : equationMembers) {
-        std::cout << "DEBUG: " << splitString << '\n';
-      }
-      std::cout << '\n';
-    #endif
-
     auto resultNotation = rpnTransformer.transformEquation(equationMembers);
+
     while (resultNotation.size() != 1) {
       calculateRpnNotation(resultNotation);
-      debug(resultNotation);
     }
-    return (*resultNotation.begin()).getValue();
-  }
 
-  void RpnCalculator::debug(std::list<EquationMember>& notation) {
-        #ifdef DEBUG
-    std::cout << "DEBUG NOTATION\n";
-    for (auto resultMember : notation) {
-      std::cout << "DEBUG: " << "VALUE " << resultMember.getValue() << " AND TYPE " << resultMember.getType() << '\n';
-    }
-    std::cout << "\n";
-    #endif
+    return (*resultNotation.begin()).getValue();
   }
 
   void RpnCalculator::calculateRpnNotation(std::list<EquationMember>& notation) {
