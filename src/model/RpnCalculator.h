@@ -35,7 +35,7 @@ namespace s21 {
         {ACOS, [](double a) { return acos(a); }},
         {TAN, [](double a) {return tan(a); }},
         {ATAN, [](double a) { return atan(a); }},
-        {LOG, [](double a) { return log2(a); }},
+        {LOG, [](double a) { return log10(a); }},
         {LN, [](double a) { return log(a); }},
         {SQRT, [](double a) { return sqrt(a); }}
       };

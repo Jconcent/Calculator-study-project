@@ -39,7 +39,9 @@ namespace s21 {
         {"acos", ACOS},
         {"tan", TAN},
         {"atan", ATAN},
-        {"sqrt", SQRT}
+        {"sqrt", SQRT},
+        {"log", LOG},
+        {"ln", LN}
       };
       std::map<EquationMemberType, int> priorityByType_ = {
         {PLUS, 1},
@@ -54,7 +56,9 @@ namespace s21 {
         {ACOS, 10},
         {TAN, 10},
         {ATAN, 10},
-        {SQRT, 10}
+        {SQRT, 10},
+        {LOG, 10},
+        {LN, 10}
       };
   };
 } // namespaces s21 
