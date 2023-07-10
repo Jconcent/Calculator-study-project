@@ -11,7 +11,14 @@ namespace s21 {
     POWER,
     MOD,
     SIN,
+    ASIN,
     COS,
+    ACOS,
+    TAN,
+    ATAN,
+    SQRT,
+    LN,
+    LOG,
     BRACKET
   };
 } // namespaces s21 

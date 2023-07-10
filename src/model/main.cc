@@ -3,7 +3,7 @@
 
 int main() {
   s21::RpnCalculator calc;
-  auto result = calc.calculate("12 + cos ( 2 ^ 8 ) + 100 + 15 * 7 / sin ( 0.5 ) + 30 / 10 / 10 * 5 * ( 10 + ( 10 + sin ( 0.5 ) ) )");
+  auto result = calc.calculate("0 - ( 5 + sqrt ( 9.123 ) )");
   std::cout << "result: " << result << '\n';
   return 0;
 }

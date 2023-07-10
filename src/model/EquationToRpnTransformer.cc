@@ -1,7 +1,5 @@
 #include "EquationToRpnTransformer.h"
 
-#include <iostream>
-
 namespace s21 {
   std::list<EquationMember> EquationToRpnTransformer::transformEquation(std::vector<std::string> equationMembers) {
     for (auto equationMember : equationMembers) {
@@ -13,7 +11,6 @@ namespace s21 {
 
   void EquationToRpnTransformer::processEquationMember(std::string member) {
     if (isNumberMember(member)) {
-        std::cout << member << '\n';
       resultNotation_.push_back(EquationMember(std::stold(member), NUMBER));
     } else if (isBinaryOperation(member)) {
       resolvePriority(EquationMember(binaryOperations_[member]));

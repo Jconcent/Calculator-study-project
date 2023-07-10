@@ -30,7 +30,14 @@ namespace s21 {
       };
       std::map<EquationMemberType, std::function<double(double)>> prefixFucntion_ = {
         {SIN, [](double a) { return sin(a); }},
-        {COS, [](double a) { return cos(a); }}
+        {ASIN,[](double a) { return asin(a); }},
+        {COS, [](double a) { return cos(a); }},
+        {ACOS, [](double a) { return acos(a); }},
+        {TAN, [](double a) {return tan(a); }},
+        {ATAN, [](double a) { return atan(a); }},
+        {LOG, [](double a) { return log2(a); }},
+        {LN, [](double a) { return log(a); }},
+        {SQRT, [](double a) { return sqrt(a); }}
       };
   };
 } // namespaces s21 

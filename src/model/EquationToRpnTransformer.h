@@ -29,12 +29,17 @@ namespace s21 {
         {"-", MINUS},
         {"*", MULTI},
         {"/", DIVISION},
-        {"%", MOD},
+        {"mod", MOD},
         {"^", POWER}
       };
       std::map<std::string, EquationMemberType> prefixFunction_ = {
         {"sin", SIN},
-        {"cos", COS}
+        {"cos", COS},
+        {"asin", ASIN},
+        {"acos", ACOS},
+        {"tan", TAN},
+        {"atan", ATAN},
+        {"sqrt", SQRT}
       };
       std::map<EquationMemberType, int> priorityByType_ = {
         {PLUS, 1},
@@ -44,7 +49,12 @@ namespace s21 {
         {MOD, 5},
         {POWER, 7},
         {SIN, 10},
-        {COS, 10}
+        {ASIN, 10},
+        {COS, 10},
+        {ACOS, 10},
+        {TAN, 10},
+        {ATAN, 10},
+        {SQRT, 10}
       };
   };
 } // namespaces s21 
