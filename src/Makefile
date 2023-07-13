@@ -1,4 +1,4 @@
-SRC_MODEL=model/RpnCalculator.cc model/EquationToRpnTransformer.cc
+SRC_MODEL=model/rpn_calculator.cc model/EquationToRpnTransformer.cc
 SRC_CONTROLLER=controller/CalculationController.cc
 MAIN_CLASS=main.cc
 LNG_STD=gnu++17

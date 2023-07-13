@@ -1,7 +1,7 @@
 #ifndef CALCULATOR_STUDY_PROJECT_SRC_CONTROLLER_CALCULATION_CONTROLLER_H
 #define CALCULATOR_STUDY_PROJECT_SRC_CONTROLLER_CALCULATION_CONTROLLER_H
 
-#include "../model/RpnCalculator.h"
+#include "../model/rpn_calculator.h"
 
 namespace s21 {
 
