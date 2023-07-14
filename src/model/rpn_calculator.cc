@@ -3,7 +3,7 @@
 namespace s21 {
     double RpnCalculator::Calculate(const std::string &equation) {
         auto equation_members = SplitBySpace(equation);
-        auto result_notation = rpn_transformer_.transformEquation(equation_members);
+        auto result_notation = rpn_transformer_.TransformEquation(equation_members);
 
         while (result_notation.size() != 1) {
             CalculateRpnNotation(result_notation);

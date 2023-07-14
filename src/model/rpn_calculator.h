@@ -7,7 +7,7 @@
 #include <map>
 #include <math.h>
 #include <functional>
-#include "EquationToRpnTransformer.h"
+#include "equation_to_rpn_transformer.h"
 
 namespace s21 {
     class RpnCalculator {
